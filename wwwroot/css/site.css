@@ -20,3 +20,160 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/* ----- General Styling ----- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h5 {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* ----- Hero Section ----- */
+.hero-section {
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+}
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+/* ----- Search Bar ----- */
+.search-bar {
+    margin: 30px 0;
+    text-align: center;
+}
+
+    .search-bar input[type="text"] {
+        width: 300px;
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+        .search-bar input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .search-bar button {
+        padding: 10px 20px;
+        margin-left: 10px;
+        border-radius: 25px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+/* ----- Recipe Cards ----- */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.card button {
+    border-radius: 25px;
+}
+
+/* ----- Layout for Recipe Grid ----- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-md-4 {
+    flex: 0 0 33.333%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+/* ----- Responsive ----- */
+@media screen and (max-width: 992px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+    }
+
+    .search-bar input[type="text"] {
+        width: 80%;
+    }
+}
+
+
+.hero-section {
+    background-image: url('/images/recipeFinder_hero_image.jpg');
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}

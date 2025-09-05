@@ -3,6 +3,38 @@
 @{
     ViewData["Title"] = "Recipe Finder";
 }
-<h2>Recipe Finder</h2>
+<div class="hero-section">
+    <div>
+        <h1>Find Your Favorite Recipes!</h1>
+        <p>Discover delicious dishes from around the world.</p>
+    </div>
+</div>
 
-<p>Here you can display your recipes from database.Saniya</p>
+
+
+<!-- Search Bar -->
+<div class="search-bar my-4 text-center">
+    <form method="get" asp-page="/SearchResults">
+        <input type="text" name="query" placeholder="Search recipes..." class="form-control" style="width:300px; display:inline-block;" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<!-- Random Recipe Suggestions -->
+<h3 class="mt-4">Random Recipe Suggestions</h3>
+<div class="row">
+    @foreach (var recipe in Model.RandomRecipes)
+    {
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="@recipe.ImageUrl" class="card-img-top" alt="@recipe.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@recipe.Title</h5>
+                    <p class="card-text">@recipe.Cuisine</p>
+                    <p><strong>Rating:</strong> @recipe.Rating</p>
+                    <a asp-page="/RecipeDetails" asp-route-id="@recipe.Id" class="btn btn-sm btn-success">View Recipe</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

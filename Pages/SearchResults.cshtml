@@ -1,0 +1,31 @@
+﻿@page
+@model CookingRecipes.Pages.SearchResultsModel
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h2>Search Results for "@Model.Query"</h2>
+
+@if (!Model.Results.Any())
+{
+    <p>No recipes found.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var recipe in Model.Results)
+        {
+            <div class="col-md-4">
+                <div class="card mb-3">
+                    <img src="@recipe.ImageUrl" class="card-img-top" alt="@recipe.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title">@recipe.Title</h5>
+                        <p class="card-text">@recipe.Cuisine</p>
+                        <p><strong>Rating:</strong> @recipe.Rating</p>
+                        <a asp-page="/RecipeDetails" asp-route-id="@recipe.Id" class="btn btn-sm btn-success">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
