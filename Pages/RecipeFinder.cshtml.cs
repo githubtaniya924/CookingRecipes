@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using CookingRecipes.Data;
 using CookingRecipes.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CookingRecipes.Pages
 {
@@ -17,15 +16,11 @@ namespace CookingRecipes.Pages
             _context = context;
         }
 
-        public IList<Recipe> RandomRecipes { get; set; }
+        public IList<Recipe> Recipes { get; set; }
 
         public async Task OnGetAsync()
         {
-            // Get 3 random recipes for suggestions
-            RandomRecipes = await _context.Recipes
-                .OrderBy(r => EF.Functions.Random())
-                .Take(3)
-                .ToListAsync();
+            Recipes = await _context.Recipes.ToListAsync();
         }
     }
 }
