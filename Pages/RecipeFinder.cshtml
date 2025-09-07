@@ -3,6 +3,40 @@
 @{
     ViewData["Title"] = "Recipe Finder";
 }
-<h2>Recipe Finder</h2>
 
-<p>Here you can display your recipes from database. github setup done.</p>
+<!-- Hero Section / Background -->
+<div class="hero-section d-flex align-items-center justify-content-center">
+    <div class="hero-overlay text-center">
+        <h1 class="display-3 fw-bold">Find Your Favorite Recipes!</h1>
+        <p class="lead">Discover delicious dishes from around the world.</p>
+
+        <!-- Search Bar -->
+        <form method="get" asp-page="/SearchResults" class="search-form mt-4">
+            <div class="input-group input-group-lg">
+                <input type="text" name="query" class="form-control" placeholder="Search recipes..." />
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Random Recipe Suggestions -->
+<div class="container mt-5">
+    <h3 class="mb-4 text-center">Random Recipe Suggestions</h3>
+    <div class="row">
+        @foreach (var recipe in Model.RandomRecipes)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@recipe.ImageUrl" class="card-img-top recipe-img" alt="@recipe.Title" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@recipe.Title</h5>
+                        <p class="card-text">@recipe.Cuisine</p>
+                        <p><strong>Rating:</strong> @recipe.Rating</p>
+                        <a asp-page="/RecipeDetails" asp-route-id="@recipe.Id" class="btn btn-success btn-sm">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
